@@ -2,22 +2,22 @@ from abc import ABC, abstractmethod
 from typing import Any, Dict
 
 class BaseEngine(ABC):
-    """
-    Abstract base class for simulation engines.
-    """
+    """Base class for all simulation engines."""
+
+    def __init__(self, name: string):
+        self.name = name
 
     @abstractmethod
     def run(self, input_data: Dict[str, Any]) -> Dict[str, Any]:
-        """
-        Run the simulation with provided input data.
-        """
+        """Run the simulation."""
         pass
 
-class UrbanGrowthEngine(BaseEngine):
-    """
-    Engine for simulating urban growth.
-    """
+class SimulationEngine(BaseEngine):
+    """Main engine for territorial simulations."""
+
+    def __init__(self):
+        super().__init__("GeoPulse Simulation Engine")
 
     def run(self, input_data: Dict[str, Any]) -> Dict[str, Any]:
-        # Simple simulation logic placeholder
-        return {"status": "success", "result": "simulation_completed"}
+        # Logique de simulation globale
+        return {"status": "success", "engine": self.name}
