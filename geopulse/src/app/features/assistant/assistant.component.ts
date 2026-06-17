@@ -5,6 +5,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
+import { ApiService } from '../../core/api/api.service';
 
 @Component({
   selector: 'app-assistant',
@@ -28,7 +29,7 @@ import { FormsModule } from '@angular/forms';
       </div>
       <div class="input-area">
         <mat-form-field appearance="outline">
-          <input matInput [(ngModel)]="currentQuery" placeholder="Ask about the territory..." (keyup.enter)="sendQuery()">
+          <input matInput [ngModel]="currentQuery()" (ngModelChange)="currentQuery.set($event)" placeholder="Ask about the territory..." (keyup.enter)="sendQuery()">
           <button mat-icon-button matSuffix (click)="sendQuery()">
             <mat-icon>send</mat-icon>
           </button>
@@ -61,6 +62,8 @@ import { FormsModule } from '@angular/forms';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AssistantComponent {
+  private api = inject(ApiService);
+
   messages = signal<Array<{id: number, text: string, role: 'user' | 'ai'}>>([]);
   currentQuery = signal('');
 
@@ -76,11 +79,13 @@ export class AssistantComponent {
 
     this.currentQuery.set('');
 
-    // Placeholder for AI response
+    // In a real implementation, we would call the API
+    // this.api.post('ai/analyze', { query }).subscribe(...)
+
     setTimeout(() => {
       this.messages.update(msgs => [...msgs, {
         id: Date.now(),
-        text: "I'm analyzing your request...",
+        text: "I'm analyzing your request via GeoPulse API...",
         role: 'ai'
       }]);
     }, 1000);
