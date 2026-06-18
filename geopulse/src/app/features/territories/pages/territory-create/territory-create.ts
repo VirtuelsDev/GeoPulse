@@ -7,7 +7,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { TerritoryStore } from '../../../core/state/territory.store';
+import { TerritoryStore } from '../../../../core/state/territory.store';
 
 @Component({
   selector: 'app-territory-create',

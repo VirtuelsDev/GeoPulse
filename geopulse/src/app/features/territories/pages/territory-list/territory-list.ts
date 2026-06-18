@@ -5,7 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { TerritoryStore, Territory } from '../../../core/state/territory.store';
+import { TerritoryStore, Territory } from '../../../../core/state/territory.store';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -84,7 +84,7 @@ import { RouterLink } from '@angular/router';
     .glass { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px); }
   `]
 })
-export class TerritoriesPage implements OnInit {
+export class TerritoryListPage implements OnInit {
   store = inject(TerritoryStore);
   displayedColumns: string[] = ['name', 'type', 'population', 'status', 'actions'];
 

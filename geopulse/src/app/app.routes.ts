@@ -1,21 +1,32 @@
 import { Routes } from '@angular/router';
-import { DashboardComponent } from './features/dashboard/dashboard.component';
-import { MapComponent } from './features/maps/map.component';
+import { ShellComponent } from './core/layout/shell/shell';
 
 export const routes: Routes = [
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'maps', component: MapComponent },
   {
-    path: 'territories',
-    loadComponent: () => import('./features/territories/pages/territories').then(m => m.TerritoriesPage)
-  },
-  {
-    path: 'territories/create',
-    loadComponent: () => import('./features/territories/pages/territory-create').then(m => m.TerritoryCreatePage)
-  },
-  {
-    path: 'territories/details/:id',
-    loadComponent: () => import('./features/territories/pages/territory-details').then(m => m.TerritoryDetailsPage)
-  },
-  { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
+    path: '',
+    component: ShellComponent,
+    children: [
+      {
+        path: 'dashboard',
+        loadComponent: () => import('./features/dashboard/pages/dashboard/dashboard').then(m => m.DashboardPage)
+      },
+      {
+        path: 'maps',
+        loadComponent: () => import('./features/maps/pages/map-view/map-view').then(m => m.MapComponent)
+      },
+      {
+        path: 'territories',
+        loadComponent: () => import('./features/territories/pages/territory-list/territory-list').then(m => m.TerritoryListPage)
+      },
+      {
+        path: 'territories/create',
+        loadComponent: () => import('./features/territories/pages/territory-create/territory-create').then(m => m.TerritoryCreatePage)
+      },
+      {
+        path: 'territories/details/:id',
+        loadComponent: () => import('./features/territories/pages/territory-details/territory-details').then(m => m.TerritoryDetailsPage)
+      },
+      { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
+    ]
+  }
 ];

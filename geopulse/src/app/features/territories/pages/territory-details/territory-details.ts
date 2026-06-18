@@ -4,8 +4,8 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
-import { TerritoryStore, Territory } from '../../../core/state/territory.store';
-import { MapComponent } from '../../maps/map.component';
+import { TerritoryStore, Territory } from '../../../../core/state/territory.store';
+import { MapComponent } from '../../../maps/pages/map-view/map-view';
 
 @Component({
   selector: 'app-territory-details',

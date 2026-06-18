@@ -10,6 +10,9 @@ env = environ.Env(
     SECRET_KEY=(str, 'django-insecure-default-change-me'),
     DATABASE_URL=(str, 'postgis://postgres:postgres@localhost:5432/geopulse'),
     GEMINI_API_KEY=(str, ''),
+    DEFAULT_COUNTRY=(str, 'BF'),
+    DEFAULT_CITY=(str, 'Ouagadougou'),
+    DEFAULT_CRS=(str, 'EPSG:32630'),
 )
 
 # Reading .env file
@@ -120,6 +123,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/stable/howto/static-files/
 
 STATIC_URL = 'static/'
+
+# Territorial Defaults
+DEFAULT_COUNTRY = env('DEFAULT_COUNTRY')
+DEFAULT_CITY = env('DEFAULT_CITY')
+DEFAULT_CRS = env('DEFAULT_CRS')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/stable/ref/settings/#default-auto-field

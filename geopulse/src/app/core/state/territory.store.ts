@@ -31,8 +31,8 @@ export class TerritoryStore {
     this._territories().find(t => t.id === this._activeTerritoryId()) || null
   );
 
-  setTerritories(territories: Territory[]) {
-    this._territories.set(territories);
+  setTerritories(territories: any[]) {
+    this._territories.set(territories as Territory[]);
     if (territories.length > 0 && !this._activeTerritoryId()) {
       this._activeTerritoryId.set(territories[0].id);
     }
