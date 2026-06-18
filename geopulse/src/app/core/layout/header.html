@@ -1,0 +1,57 @@
+<mat-toolbar class="header-toolbar glass">
+  <button mat-icon-button (click)="toggleSidebar.emit()">
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <div class="search-box glass">
+    <mat-icon>search</mat-icon>
+    <input type="text" placeholder="Rechercher (Ctrl + K)">
+  </div>
+
+  <span class="spacer"></span>
+
+  <div class="header-actions">
+    <button mat-button [matMenuTriggerFor]="periodMenu" class="period-selector">
+      <mat-icon>calendar_today</mat-icon>
+      <span>{{ selectedPeriod }}</span>
+      <mat-icon>expand_more</mat-icon>
+    </button>
+    <mat-menu #periodMenu="matMenu">
+      @for (p of periods; track p) {
+        <button mat-menu-item (click)="selectedPeriod = p">{{ p }}</button>
+      }
+    </mat-menu>
+
+    <button mat-flat-button color="primary" class="new-btn">
+      <mat-icon>add</mat-icon>
+      <span>Nouveau</span>
+    </button>
+
+    <button mat-icon-button class="notification-btn">
+      <mat-icon>notifications_none</mat-icon>
+      <span class="dot"></span>
+    </button>
+
+    <button mat-icon-button (click)="theme.toggle()">
+      <mat-icon>{{ theme.isDark() ? 'light_mode' : 'dark_mode' }}</mat-icon>
+    </button>
+
+    <button mat-icon-button (click)="toggleAssistant.emit()" class="ai-btn">
+      <mat-icon>auto_awesome</mat-icon>
+    </button>
+
+    <div class="user-profile" [matMenuTriggerFor]="userMenu">
+      <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Pierre" alt="Avatar">
+      <div class="user-info">
+        <span class="name">Pierre</span>
+        <span class="role">Administrateur</span>
+      </div>
+    </div>
+    <mat-menu #userMenu="matMenu">
+      <button mat-menu-item><mat-icon>person</mat-icon> Profil</button>
+      <button mat-menu-item><mat-icon>settings</mat-icon> Paramètres</button>
+      <mat-divider></mat-divider>
+      <button mat-menu-item><mat-icon>logout</mat-icon> Déconnexion</button>
+    </mat-menu>
+  </div>
+</mat-toolbar>

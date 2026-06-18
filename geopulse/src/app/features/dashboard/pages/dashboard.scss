@@ -1,0 +1,41 @@
+.dashboard-page {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.kpi-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.visualisation-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 24px;
+  height: 480px;
+
+  @media (max-width: 1440px) {
+    grid-template-columns: 1fr;
+    height: auto;
+
+    .map-card { height: 480px; }
+    .chart-card { height: 400px; }
+  }
+}
+
+.bottom-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 24px;
+
+  @media (max-width: 1440px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+:host ::ng-deep {
+  .map-card .card-content { padding: 0; }
+}

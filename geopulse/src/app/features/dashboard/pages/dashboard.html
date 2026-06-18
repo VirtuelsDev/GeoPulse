@@ -1,0 +1,41 @@
+<div class="dashboard-page">
+  <ui-page-header title="Tableau de bord" subtitle="Vue d'ensemble et surveillance du territoire">
+    <button mat-button class="glass"><mat-icon>file_download</mat-icon> Exporter rapport</button>
+    <button mat-flat-button color="primary"><mat-icon>share</mat-icon> Partager vue</button>
+  </ui-page-header>
+
+  <section class="kpi-section">
+    @for (kpi of service.kpis(); track kpi.label) {
+      <ui-kpi-card
+        [label]="kpi.label"
+        [value]="kpi.value"
+        [icon]="kpi.icon"
+        [trend]="kpi.trend"
+        [color]="kpi.color">
+      </ui-kpi-card>
+    }
+  </section>
+
+  <div class="visualisation-grid">
+    <ui-card cardTitle="Occupation du sol" class="map-card">
+      <button header-actions mat-icon-button><mat-icon>fullscreen</mat-icon></button>
+      <app-occupation-map></app-occupation-map>
+    </ui-card>
+
+    <ui-card cardTitle="Évolution de la croissance urbaine" class="chart-card">
+      <app-urban-growth-chart></app-urban-growth-chart>
+    </ui-card>
+  </div>
+
+  <div class="bottom-grid">
+    <ui-card cardTitle="Analyses récentes" class="analyses-card">
+      <button header-actions mat-button color="primary">Voir tout</button>
+      <app-recent-analyses></app-recent-analyses>
+    </ui-card>
+
+    <ui-card cardTitle="Alertes récentes" class="alerts-card">
+      <button header-actions mat-button color="warn">Gérer alertes</button>
+      <app-recent-alerts></app-recent-alerts>
+    </ui-card>
+  </div>
+</div>
