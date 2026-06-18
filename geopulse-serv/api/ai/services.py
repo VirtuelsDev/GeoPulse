@@ -18,41 +18,36 @@ class GeminiService(BaseService):
             self.model = None
 
     def generate_content(self, prompt: str) -> Optional[str]:
-        """
-        Generate content based on a prompt.
-
-        Args:
-            prompt: The input prompt for the AI.
-
-        Returns:
-            The generated text content or None if failed.
-        """
         if not self.model:
-            self.log_error(Exception("Gemini API key not configured"))
             return None
-
         try:
             response = self.model.generate_content(prompt)
             return response.text
         except Exception as e:
-            self.log_error(e, {"prompt": prompt})
+            self.log_error(e)
             return None
 
-    def analyze_spatial_query(self, query: str, context_data: Dict[str, Any]) -> Dict[str, Any]:
-        """
-        Analyze a natural language query and return structured spatial analysis steps.
+    def analyze_spatial_query(self, query: str, territory_id: Optional[int] = None) -> Dict[str, Any]:
+        from api.territories.models import TerritorialMetric, Territory
 
-        Args:
-            query: User's natural language question.
-            context_data: Available geospatial layers and territory info.
+        context_str = ""
+        if territory_id:
+            try:
+                territory = Territory.objects.get(id=territory_id)
+                metrics = TerritorialMetric.objects.filter(territory=territory).order_by('-timestamp')[:10]
+                metrics_summary = ", ".join([f"{m.label}: {m.value} {m.unit}" for m in metrics])
+                context_str = f"Territory: {territory.name}. Current Metrics: {metrics_summary}."
+            except Territory.DoesNotExist:
+                pass
 
-        Returns:
-            Structured JSON with analysis plan.
-        """
-        # Placeholder for complex prompt engineering
-        system_prompt = "You are a GIS expert. Analyze the following query..."
-        full_prompt = f"{system_prompt}\nQuery: {query}\nContext: {context_data}"
+        system_prompt = (
+            "You are GeoPulse-AI, an expert urban planner and GIS analyst. "
+            "Use the provided territorial context to answer questions precisely."
+        )
 
-        # In a real implementation, we would parse the AI response
-        # result = self.generate_content(full_prompt)
-        return {"status": "analyzed", "original_query": query}
+        full_prompt = f"{system_prompt}\n\nContext: {context_str}\n\nUser Query: {query}"
+        return {
+            "status": "success",
+            "message": f"Analysis for: '{query}'",
+            "context_summary": context_str
+        }

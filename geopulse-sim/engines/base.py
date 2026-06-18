@@ -4,7 +4,7 @@ from typing import Any, Dict
 class BaseEngine(ABC):
     """Base class for all simulation engines."""
 
-    def __init__(self, name: string):
+    def __init__(self, name: str):
         self.name = name
 
     @abstractmethod

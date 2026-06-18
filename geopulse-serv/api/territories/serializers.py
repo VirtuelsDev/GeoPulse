@@ -12,10 +12,9 @@ class TerritorySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Territory
-        fields = ['id', 'name', 'code', 'type', 'boundary', 'metrics', 'created_at', 'updated_at']
+        fields = ['id', 'name', 'code', 'type', 'country', 'region_name', 'population', 'area_km2', 'latitude', 'longitude', 'boundary', 'is_active', 'metrics', 'created_at', 'updated_at']
 
     def to_representation(self, instance):
-        """Custom representation to return GeoJSON-like boundary."""
         ret = super().to_representation(instance)
         if instance.boundary:
             ret['boundary'] = json.loads(instance.boundary.geojson)

@@ -13,6 +13,7 @@ import { finalize } from 'rxjs';
 @Component({
   selector: 'app-assistant',
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     CommonModule,
     MatFormFieldModule,
@@ -145,7 +146,6 @@ import { finalize } from 'rxjs';
     }
     mat-form-field { width: 100%; }
   `],
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AssistantComponent {
   @Output() close = new EventEmitter<void>();

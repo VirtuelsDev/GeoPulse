@@ -4,9 +4,9 @@ import { Chart, ChartConfiguration, registerables } from 'chart.js';
 @Component({
   selector: 'app-growth-chart',
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<div class="chart-container"><canvas #chartCanvas></canvas></div>',
   styles: ['.chart-container { position: relative; height: 300px; width: 100%; }'],
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class GrowthChartComponent implements AfterViewInit {
   @ViewChild('chartCanvas') chartCanvas!: ElementRef<HTMLCanvasElement>;

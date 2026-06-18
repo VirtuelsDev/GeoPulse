@@ -1,8 +1,18 @@
 export interface Territory {
-  id: string;
+  id: number;
+  code: string;
   name: string;
-  boundary: any; // GeoJSON
-  center: [number, number];
+  type: string;
+  country: string;
+  region?: string;
+  population?: number;
+  areaKm2?: number;
+  latitude?: number;
+  longitude?: number;
+  boundary?: any; // GeoJSON
+  isActive: boolean;
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 export interface Layer {

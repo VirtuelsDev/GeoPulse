@@ -1,4 +1,4 @@
-import { Component, signal, inject } from '@angular/core';
+import { Component, ChangeDetectionStrategy, signal, inject, HostListener } from '@angular/core';
 import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -10,10 +10,12 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { AssistantComponent } from './features/assistant/assistant.component';
+import { TerritorySelector } from './features/territories/components/territory-selector';
 
 @Component({
   selector: 'app-root',
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     CommonModule,
     RouterOutlet,
@@ -27,7 +29,8 @@ import { AssistantComponent } from './features/assistant/assistant.component';
     MatBadgeModule,
     MatInputModule,
     MatFormFieldModule,
-    AssistantComponent
+    AssistantComponent,
+    TerritorySelector
   ],
   template: `
     <div class="app-shell" [class.dark-theme]="isDarkTheme()">
@@ -95,6 +98,8 @@ import { AssistantComponent } from './features/assistant/assistant.component';
               <mat-icon>search</mat-icon>
               <input type="text" placeholder="Rechercher (Ctrl + K)">
             </div>
+
+            <app-territory-selector></app-territory-selector>
 
             <span class="spacer"></span>
 
@@ -232,5 +237,17 @@ export class AppComponent {
 
   toggleAssistant() {
     this.assistantVisible.set(!this.assistantVisible());
+  }
+
+  @HostListener('window:keydown', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) {
+    if ((event.ctrlKey || event.metaKey) && event.key === 'k') {
+      event.preventDefault();
+      // Logic for focus on search or open global search
+    }
+    if ((event.ctrlKey || event.metaKey) && event.key === '/') {
+      event.preventDefault();
+      this.toggleAssistant();
+    }
   }
 }

@@ -53,7 +53,7 @@ Toute proposition de code, architecture ou implémentation doit respecter strict
 
 ## Backend
 
-* Python 
+* Python
 * Django
 * Django REST Framework
 * GeoDjango
@@ -71,7 +71,7 @@ Toute proposition de code, architecture ou implémentation doit respecter strict
 
 ## Frontend
 
-* Angular 
+* Angular
 * Standalone Components
 * Signals
 * RxJS
