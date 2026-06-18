@@ -1,20 +1,21 @@
 import { Routes } from '@angular/router';
-import { Shell } from './core/layout/shell';
+import { DashboardComponent } from './features/dashboard/dashboard.component';
+import { MapComponent } from './features/maps/map.component';
 
 export const routes: Routes = [
+  { path: 'dashboard', component: DashboardComponent },
+  { path: 'maps', component: MapComponent },
   {
-    path: '',
-    component: Shell,
-    children: [
-      {
-        path: '',
-        redirectTo: 'dashboard',
-        pathMatch: 'full'
-      },
-      {
-        path: 'dashboard',
-        loadComponent: () => import('./features/dashboard/pages/dashboard').then(m => m.Dashboard)
-      }
-    ]
-  }
+    path: 'territories',
+    loadComponent: () => import('./features/territories/pages/territories').then(m => m.TerritoriesPage)
+  },
+  {
+    path: 'territories/create',
+    loadComponent: () => import('./features/territories/pages/territory-create').then(m => m.TerritoryCreatePage)
+  },
+  {
+    path: 'territories/details/:id',
+    loadComponent: () => import('./features/territories/pages/territory-details').then(m => m.TerritoryDetailsPage)
+  },
+  { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
 ];

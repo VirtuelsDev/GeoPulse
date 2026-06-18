@@ -4,16 +4,26 @@ class Territory(models.Model):
     """Model representing a geographical territory."""
 
     TERRITORY_TYPES = [
-        ('CITY', 'City'),
+        ('CITY', 'Ville'),
+        ('COMMUNE', 'Commune'),
+        ('DEPARTEMENT', 'Département'),
+        ('PROVINCE', 'Province'),
+        ('REGION', 'Région'),
         ('DISTRICT', 'District'),
-        ('REGION', 'Region'),
-        ('QUARTIER', 'Quartier'),
+        ('SPECIAL', 'Zone spéciale'),
     ]
 
     name = models.CharField(max_length=255)
     code = models.CharField(max_length=50, unique=True, null=True, blank=True)
     type = models.CharField(max_length=20, choices=TERRITORY_TYPES, default='CITY')
-    boundary = models.PolygonField(srid=4326)  # WGS84 standard
+    country = models.CharField(max_length=100, default='France')
+    region_name = models.CharField(max_length=100, null=True, blank=True)
+    population = models.IntegerField(default=0)
+    area_km2 = models.FloatField(default=0.0)
+    latitude = models.FloatField(null=True, blank=True)
+    longitude = models.FloatField(null=True, blank=True)
+    boundary = models.GeometryField(srid=4326)  # Changed to GeometryField to allow multi-types
+    is_active = models.BooleanField(default=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

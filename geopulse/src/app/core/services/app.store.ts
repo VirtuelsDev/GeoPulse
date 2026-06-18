@@ -2,22 +2,22 @@ import { Injectable, signal, computed, inject } from '@angular/core';
 import { Territory, Layer } from '../../shared/models/geospatial.model';
 import { ApiService } from '../api/api.service';
 import { finalize } from 'rxjs';
+import { TerritoryStore } from '../state/territory.store';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AppStore {
   private api = inject(ApiService);
+  private territoryStore = inject(TerritoryStore);
 
   // State
-  private _selectedTerritory = signal<Territory | null>(null);
-  private _territories = signal<Territory[]>([]);
   private _layers = signal<Layer[]>([]);
   private _loading = signal<boolean>(false);
 
   // Selectors
-  selectedTerritory = computed(() => this._selectedTerritory());
-  territories = computed(() => this._territories());
+  selectedTerritory = this.territoryStore.activeTerritory;
+  territories = this.territoryStore.territories;
   activeLayers = computed(() => this._layers().filter(l => l.visible));
   isLoading = computed(() => this._loading());
 
@@ -27,13 +27,13 @@ export class AppStore {
     this.api.get<Territory[]>('territories/territories/')
       .pipe(finalize(() => this._loading.set(false)))
       .subscribe({
-        next: (data) => this._territories.set(data),
+        next: (data) => this.territoryStore.setTerritories(data),
         error: (err) => console.error('Error loading territories', err)
       });
   }
 
-  setSelectedTerritory(territory: Territory) {
-    this._selectedTerritory.set(territory);
+  setSelectedTerritory(id: number) {
+    this.territoryStore.setActiveTerritory(id);
   }
 
   setLayers(layers: Layer[]) {

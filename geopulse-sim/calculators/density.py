@@ -23,15 +23,6 @@ class DensityCalculator:
                                 years: int = 10) -> Dict[str, Any]:
         """
         Simulate the land requirement for urban expansion given population growth.
-
-        Args:
-            current_pop: Current population.
-            growth_rate: Annual growth rate (e.g., 0.02 for 2%).
-            target_density: Desired density for new developments (hab/km²).
-            years: Projection horizon.
-
-        Returns:
-            Dictionary with projection results.
         """
         projected_pop = current_pop * ((1 + growth_rate) ** years)
         additional_pop = projected_pop - current_pop

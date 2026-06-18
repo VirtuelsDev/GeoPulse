@@ -1,34 +1,131 @@
+
+#   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
+#   For a library or binary, you wish to ignore these files if they exist
+#   For a project, you do want to check these files in
+#   However, in case of collaboration, if having platform-specific dependencies or dependencies
+#   Similar to Pipfile.lock, it is generally recommended to include pdm.lock in version control.
+#   Similar to Pipfile.lock, it is generally recommended to include poetry.lock in version control.
+#   fail to install them.
+#   having no cross-platform support, pipenv may install dependencies that don't work, or even
+#  Usually these files are written by a python script from a separate repository
+#  and such file should be resting in test/ or etc.
+# .python-version
+# Build
+# Byte-compiled / optimized / DLL files
+# C extensions
+# Celery stuff
+# Cython debug symbols
 # Dependency directories
-node_modules/
-jspm_packages/
-
-# Build artifacts
-dist/
-build/
-bin/
-obj/
-out/
-.angular/
-
-# IDEs and editors
-.vscode/
-.idea/
-*.swp
-*.swo
-.DS_Store
-
+# Distribution / packaging
+# Django stuff:
+# Environments
+# Flask stuff:
+# IDEs
+# IPython
+# Installer logs
+# Jupyter Notebook
 # Logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
+# Node modules
+# PEP 582; used by e.g. github.com/pdm-project/pdm
+# Pipfile.lock
+# PyBuilder
+# PyCharm
+# PyInstaller
+# Pyre type checker
 # Python
-__pycache__/
+# Rope project settings
+# SageMath parsed files
+# Scrapy stuff:
+# Sphinx documentation
+# Spyder project settings
+# Translations
+# Unit test / coverage reports
+# VS Code
+# mkdocs documentation
+# mypy
+# pdm
+# pdm.lock
+# pipenv
+# poetry
+# poetry.lock
+# pyenv
+# pytype static type analyzer
+*$py.class
+*.cover
+*.egg
+*.egg-info/
+*.log
+*.manifest
+*.mo
+*.pot
+*.py,cover
 *.py[cod]
-*.class
-venv/
+*.sage.py
+*.so
+*.spec
+.Python
+.angular/
+.cache
+.coverage
+.coverage.*
+.dmypy.json
+.eggs/
 .env
-
-# Database
-*.sqlite3
+.hypothesis/
+.idea/
+.installed.cfg
+.ipynb_checkpoints
+.mypy_cache/
+.noseids
+.pybuilder/
+.pyre/
+.pytest_cache/
+.pytype/
+.ropeproject
+.scrapy
+.spyderproject
+.spyproject
+.toml
+.venv
+.vscode/
+.webassets-cache
+/site
+ENV/
+MANIFEST
+__pycache__/
+__pypackages__/
+build/
+celerybeat-schedule
+celerybeat.pid
+cover/
+coverage.xml
+cython_debug/
+db.sqlite3
+db.sqlite3-journal
+develop-eggs/
+dist/
+dmypy.json
+docs/_build/
+downloads/
+eggs/
+env.bak/
+env/
+htmlcov/
+instance/
+ipython_config.py
+lib/
+lib64/
+local_settings.py
+node_modules/
+nosetests.xml
+parts/
+pip-delete-this-directory.txt
+pip-log.txt
+profile_default/
+sdist/
+share/python-wheels/
+target/
+var/
+venv.bak/
+venv/
+wheels/

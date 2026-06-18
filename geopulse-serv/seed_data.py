@@ -10,11 +10,19 @@ from django.contrib.gis.geos import Polygon
 
 def seed():
     # Create a dummy territory
-    t, _ = Territory.objects.get_or_create(
-        name="Paris",
-        code="75000",
-        type="CITY",
-        boundary=Polygon(((2.2, 48.8), (2.4, 48.8), (2.4, 48.9), (2.2, 48.9), (2.2, 48.8)))
+    t, _ = Territory.objects.update_or_create(
+        name="Ouagadougou",
+        defaults={
+            'code': "OUAGA",
+            'type': "CITY",
+            'country': "Burkina Faso",
+            'region_name': "Centre",
+            'population': 2500000,
+            'area_km2': 500,
+            'latitude': 12.37,
+            'longitude': -1.52,
+            'boundary': Polygon((( -1.6, 12.3), (-1.4, 12.3), (-1.4, 12.4), (-1.6, 12.4), (-1.6, 12.3)))
+        }
     )
 
     metrics_data = [
