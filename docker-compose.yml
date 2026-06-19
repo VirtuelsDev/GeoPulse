@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgis/postgis:15-3.3
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=geopulse
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+
+  backend:
+    build:
+      context: .
+      dockerfile: geopulse-serv/Dockerfile
+    volumes:
+      - ./geopulse-serv:/app/geopulse-serv
+      - ./geopulse-sim:/app/geopulse-sim
+    environment:
+      - DATABASE_URL=postgis://postgres:postgres@db:5432/geopulse
+      - DEBUG=True
+      - SECRET_KEY=django-insecure-dev-key
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+  frontend:
+    build:
+      context: .
+      dockerfile: geopulse/Dockerfile
+    ports:
+      - "4200:80"
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:
