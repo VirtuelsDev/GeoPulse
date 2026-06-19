@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AssistantAI as Assistant } from '../../../features/assistant-ai/pages/assistant/assistant';
+import { AssistantAI as Assistant } from '../../../features/assistant-ai/assistant';
 
 @Component({
   selector: 'app-assistant-panel',
