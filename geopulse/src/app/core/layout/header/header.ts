@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { TerritoryStore } from '../../../features/territories/store/territory.store';
+import { TerritoryStore } from '../../../features/territories/state/territory.store';
 
 @Component({
   selector: 'app-header',

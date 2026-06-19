@@ -2,7 +2,7 @@ import { Injectable, signal, computed, inject } from '@angular/core';
 import { Territory, Layer } from '../../shared/models/geospatial.model';
 import { ApiService } from './api.service';
 import { finalize } from 'rxjs';
-import { TerritoryStore } from '../../features/territories/store/territory.store';
+import { TerritoryStore } from '../../features/territories/state/territory.store';
 
 @Injectable({
   providedIn: 'root'

@@ -1,7 +1,7 @@
 import { Component, ChangeDetectionStrategy, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
-import { TerritoryStore } from '../../store/territory.store';
+import { TerritoryStore } from '../state/territory.store';
 
 @Component({
   selector: 'app-territory-details',
