@@ -2,6 +2,7 @@ import google.generativeai as genai
 from django.conf import settings
 from core.services import BaseService
 from typing import Any, Dict, List, Optional
+import json
 
 class GeminiService(BaseService):
     """
@@ -27,6 +28,21 @@ class GeminiService(BaseService):
             self.log_error(e)
             return None
 
+    def get_simulation_recommendations(self, simulation_results: Dict[str, Any]) -> Optional[str]:
+        """
+        Generates urban planning recommendations based on simulation results.
+        """
+        if not self.model:
+            return "AI Service not configured."
+
+        prompt = (
+            "You are GeoPulse-AI, a lead urban planner. Analyze the following simulation results "
+            "and provide 3-4 strategic recommendations for decision-makers. "
+            f"Results: {json.dumps(simulation_results)}"
+        )
+
+        return self.generate_content(prompt)
+
     def analyze_spatial_query(self, query: str, territory_id: Optional[int] = None) -> Dict[str, Any]:
         from api.territories.models import TerritorialMetric, Territory
 
@@ -42,12 +58,17 @@ class GeminiService(BaseService):
 
         system_prompt = (
             "You are GeoPulse-AI, an expert urban planner and GIS analyst. "
-            "Use the provided territorial context to answer questions precisely."
+            "Your goal is to provide insightful analysis and recommendations based on territorial data. "
+            "Respond in a professional and helpful tone."
         )
 
         full_prompt = f"{system_prompt}\n\nContext: {context_str}\n\nUser Query: {query}"
+
+        ai_response = self.generate_content(full_prompt)
+
         return {
             "status": "success",
-            "message": f"Analysis for: '{query}'",
+            "query": query,
+            "response": ai_response or "Je n'ai pas pu générer d'analyse pour le moment.",
             "context_summary": context_str
         }

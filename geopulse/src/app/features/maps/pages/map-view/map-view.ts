@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, AfterViewInit, ElementRef, ViewChild, OnDestroy } from '@angular/common';
+import { Component, ChangeDetectionStrategy, AfterViewInit, ElementRef, ViewChild, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import * as L from 'leaflet';
 
@@ -9,10 +9,10 @@ import * as L from 'leaflet';
   imports: [CommonModule],
   template: '<div #mapContainer class="map-frame"></div>',
   styles: [`
-    .map-frame { height: 100%; width: 100%; border-radius: 12px; }
+    .map-frame { height: 100%; width: 100%; border-radius: 12px; min-height: 400px; }
   `]
 })
-export class MapComponent implements AfterViewInit, OnDestroy {
+export class Map implements AfterViewInit, OnDestroy {
   @ViewChild('mapContainer') mapContainer!: ElementRef;
   private map?: L.Map;
 

@@ -10,4 +10,5 @@ urlpatterns = [
     path("api/v1/territories/", include("api.territories.urls")),
     path("api/v1/ai/", include("api.ai.urls")),
     path("api/v1/simulations/", include("api.simulations.urls")),
+    path("api/v1/layers/", include("api.layers.urls")),
 ]
