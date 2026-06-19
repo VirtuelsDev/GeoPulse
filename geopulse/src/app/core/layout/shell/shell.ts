@@ -4,12 +4,13 @@ import { RouterOutlet } from '@angular/router';
 import { Header } from '../header/header';
 import { Sidebar } from '../sidebar/sidebar';
 import { AssistantPanel } from '../assistant-panel/assistant-panel';
+import { Footer } from '../footer/footer';
 
 @Component({
   selector: 'app-shell',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule, RouterOutlet, Header, Sidebar, AssistantPanel],
+  imports: [CommonModule, RouterOutlet, Header, Sidebar, AssistantPanel, Footer],
   template: `
     <div class="shell-container">
       <app-header (toggleSidebar)="isSidebarOpen.set(!isSidebarOpen())"></app-header>
@@ -20,7 +21,10 @@ import { AssistantPanel } from '../assistant-panel/assistant-panel';
         }
 
         <main class="main-content">
-          <router-outlet></router-outlet>
+          <div class="content-wrapper">
+            <router-outlet></router-outlet>
+          </div>
+          <app-footer></app-footer>
         </main>
 
         <app-assistant-panel class="assistant-area"></app-assistant-panel>
@@ -43,8 +47,13 @@ import { AssistantPanel } from '../assistant-panel/assistant-panel';
     .main-content {
       flex: 1;
       overflow-y: auto;
-      padding: 24px;
+      display: flex;
+      flex-direction: column;
       background: #f4f7f6;
+    }
+    .content-wrapper {
+      flex: 1;
+      padding: 24px;
     }
     .sidebar-area {
       width: 260px;

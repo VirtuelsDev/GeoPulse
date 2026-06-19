@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SimulationStore } from '../../../../core/state/simulation.store';
+import { SimulationStore } from '../../store/simulation.store';
 
 @Component({
   selector: 'app-simulation-list',

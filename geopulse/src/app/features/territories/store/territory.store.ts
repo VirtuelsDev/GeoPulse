@@ -6,15 +6,16 @@ export interface Territory {
   name: string;
   type: string;
   country: string;
-  region: string;
-  population: number;
-  areaKm2: number;
-  latitude: number;
-  longitude: number;
-  geometry: any;
+  region?: string;
+  population?: number;
+  areaKm2?: number;
+  latitude?: number;
+  longitude?: number;
+  boundary?: any; // GeoJSON
+  geometry?: any;
   isActive: boolean;
-  createdAt: string;
-  updatedAt: string;
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 @Injectable({

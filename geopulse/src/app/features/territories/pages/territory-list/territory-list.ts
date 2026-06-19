@@ -4,7 +4,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
-import { TerritoryStore } from '../../../../core/state/territory.store';
+import { TerritoryStore } from '../../store/territory.store';
 
 @Component({
   selector: 'app-territory-list',
