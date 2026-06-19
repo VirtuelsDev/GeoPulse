@@ -1,11 +1,5 @@
-import sys
-import os
 from typing import Any, Dict
 from django.conf import settings
-
-# Add geopulse-sim to path
-sys.path.append(os.path.join(settings.BASE_DIR, '../geopulse-sim'))
-
 from engines.urban import UrbanSimulationEngine
 from ..models import SimulationScenario
 from api.territories.models import TerritorialMetric

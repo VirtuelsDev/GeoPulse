@@ -16,6 +16,21 @@ class DensityCalculator:
             return 0
         return total_floor_area / parcel_area
 
+    def calculate_dwelling_density(self, total_dwellings: int, area_ha: float) -> float:
+        """
+        Calculate dwelling density (dwellings per hectare).
+
+        Args:
+            total_dwellings: Number of housing units.
+            area_ha: Area in hectares.
+
+        Returns:
+            Dwellings per hectare.
+        """
+        if area_ha <= 0:
+            return 0
+        return total_dwellings / area_ha
+
     def simulate_urban_expansion(self,
                                 current_pop: int,
                                 growth_rate: float,
