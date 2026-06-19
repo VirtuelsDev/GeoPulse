@@ -9,14 +9,31 @@ import { MatIconModule } from '@angular/material/icon';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [CommonModule, MatButtonModule, MatIconModule],
   template: `
-    <button [mat-flat-button]="variant === 'flat'"
-            [mat-stroked-button]="variant === 'stroked'"
-            [color]="color"
-            [disabled]="disabled"
-            (click)="clicked.emit(\$event)">
-      <mat-icon *ngIf="icon">{{ icon }}</mat-icon>
-      <ng-content></ng-content>
-    </button>
+    @if (variant === 'flat') {
+      <button mat-flat-button
+              [color]="color"
+              [disabled]="disabled"
+              (click)="clicked.emit($event)">
+        <mat-icon *ngIf="icon">{{ icon }}</mat-icon>
+        <ng-content></ng-content>
+      </button>
+    } @else if (variant === 'stroked') {
+      <button mat-stroked-button
+              [color]="color"
+              [disabled]="disabled"
+              (click)="clicked.emit($event)">
+        <mat-icon *ngIf="icon">{{ icon }}</mat-icon>
+        <ng-content></ng-content>
+      </button>
+    } @else {
+      <button mat-button
+              [color]="color"
+              [disabled]="disabled"
+              (click)="clicked.emit($event)">
+        <mat-icon *ngIf="icon">{{ icon }}</mat-icon>
+        <ng-content></ng-content>
+      </button>
+    }
   `
 })
 export class UiButton {

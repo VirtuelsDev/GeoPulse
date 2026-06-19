@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { TerritoryStore } from '../../state/territory.store';
+import { TerritoryStore } from '../../../features/territories/store/territory.store';
 
 @Component({
   selector: 'app-header',
@@ -20,10 +20,12 @@ import { TerritoryStore } from '../../state/territory.store';
 
       <span class="spacer"></span>
 
-      <div class="territory-context" *ngIf="store.activeTerritory(); as territory">
-        <mat-icon>place</mat-icon>
-        <span>{{ territory.name }}</span>
-      </div>
+      @if (store.activeTerritory(); as t) {
+        <div class="territory-context">
+          <mat-icon>place</mat-icon>
+          <span>{{ t.name }}</span>
+        </div>
+      }
 
       <button mat-icon-button>
         <mat-icon>account_circle</mat-icon>

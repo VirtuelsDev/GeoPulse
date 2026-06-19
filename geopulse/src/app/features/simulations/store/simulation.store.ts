@@ -1,5 +1,5 @@
 import { Injectable, signal, computed, inject } from '@angular/core';
-import { ApiService } from '../api/api.service';
+import { ApiService } from '../../../core/services/api.service';
 import { finalize } from 'rxjs';
 
 export interface SimulationResult {
