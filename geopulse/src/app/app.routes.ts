@@ -4,7 +4,7 @@ import { Shell } from './core/layout/shell/shell';
 export const routes: Routes = [
   {
     path: 'login',
-    loadComponent: () => import('./core/auth/pages/login/login').then(m => m.Login)
+    loadComponent: () => import('./core/auth/login/login').then(m => m.Login)
   },
   {
     path: '',
@@ -40,35 +40,35 @@ export const routes: Routes = [
       },
       {
         path: 'analytics',
-        loadComponent: () => import('./features/analytics/occupation-analysis').then(m => m.OccupationAnalysis)
+        loadComponent: () => import('./features/analytics/occupation-analysis/occupation-analysis').then(m => m.OccupationAnalysis)
       },
       {
         path: 'scenarios',
-        loadComponent: () => import('./features/scenarios/scenario-list').then(m => m.ScenarioList)
+        loadComponent: () => import('./features/scenarios/scenario-list/scenario-list').then(m => m.ScenarioList)
       },
       {
         path: 'data-management',
-        loadComponent: () => import('./features/data-management/datasets').then(m => m.Datasets)
+        loadComponent: () => import('./features/data-management/datasets/datasets').then(m => m.Datasets)
       },
       {
         path: 'reports',
-        loadComponent: () => import('./features/reports/report-list').then(m => m.ReportList)
+        loadComponent: () => import('./features/reports/report-list/report-list').then(m => m.ReportList)
       },
       {
         path: 'alerts',
-        loadComponent: () => import('./features/alerts/alert-list').then(m => m.AlertList)
+        loadComponent: () => import('./features/alerts/alert-list/alert-list').then(m => m.AlertList)
       },
       {
         path: 'settings',
-        loadComponent: () => import('./features/settings/general').then(m => m.GeneralSettings)
+        loadComponent: () => import('./features/settings/general/general').then(m => m.GeneralSettings)
       },
       {
         path: 'assistant',
-        loadComponent: () => import('./features/assistant-ai/assistant').then(m => m.AssistantAI)
+        loadComponent: () => import('./features/assistant-ai/assistant/assistant').then(m => m.AssistantAI)
       },
       {
         path: 'users',
-        loadComponent: () => import('./core/users/pages/user-list/user-list').then(m => m.UserList)
+        loadComponent: () => import('./core/users/user-list/user-list').then(m => m.UserList)
       },
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
     ]

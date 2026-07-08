@@ -1,0 +1,5 @@
+<div *ngIf="store.activeTerritory() as t">
+   <h1>{{ t.name }}</h1>
+   <p>Type: {{ t.type }}</p>
+   <p>Population: {{ t.population | number }}</p>
+</div>

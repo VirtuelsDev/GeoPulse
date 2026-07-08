@@ -1,0 +1,18 @@
+<div class="shell-container">
+  <app-header (toggleSidebar)="isSidebarOpen.set(!isSidebarOpen())"></app-header>
+
+  <div class="shell-body">
+    @if (isSidebarOpen()) {
+      <app-sidebar class="sidebar-area"></app-sidebar>
+    }
+
+    <main class="main-content">
+      <div class="content-wrapper">
+        <router-outlet></router-outlet>
+      </div>
+      <app-footer></app-footer>
+    </main>
+
+    <app-assistant-panel class="assistant-area"></app-assistant-panel>
+  </div>
+</div>

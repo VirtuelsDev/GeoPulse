@@ -3,6 +3,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   selector: 'app-occupation-map',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<div>Occupation Map Placeholder</div>'
+  templateUrl: './occupation-map.html',
+  styleUrls: ['./occupation-map.scss']
 })
 export class OccupationMap {}

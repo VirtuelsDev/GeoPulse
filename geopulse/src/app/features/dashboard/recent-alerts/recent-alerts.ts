@@ -3,6 +3,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   selector: 'app-recent-alerts',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<div>Recent Alerts Placeholder</div>'
+  templateUrl: './recent-alerts.html',
+  styleUrls: ['./recent-alerts.scss']
 })
 export class RecentAlerts {}

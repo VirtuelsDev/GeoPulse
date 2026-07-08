@@ -3,6 +3,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   selector: 'app-territory-stats',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<div>Territory Stats Placeholder</div>'
+  templateUrl: './territory-stats.html',
+  styleUrls: ['./territory-stats.scss']
 })
 export class TerritoryStats {}

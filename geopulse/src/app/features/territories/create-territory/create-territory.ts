@@ -3,6 +3,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   selector: 'app-create-territory',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<h1>Créer un territoire</h1>'
+  templateUrl: './create-territory.html',
+  styleUrls: ['./create-territory.scss']
 })
 export class CreateTerritory {}

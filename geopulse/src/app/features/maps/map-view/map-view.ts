@@ -7,10 +7,8 @@ import * as L from 'leaflet';
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [CommonModule],
-  template: '<div #mapContainer class="map-frame"></div>',
-  styles: [`
-    .map-frame { height: 100%; width: 100%; border-radius: 12px; min-height: 400px; }
-  `]
+  templateUrl: './map-view.html',
+  styleUrls: ['./map-view.scss']
 })
 export class Map implements AfterViewInit, OnDestroy {
   @ViewChild('mapContainer') mapContainer!: ElementRef;
