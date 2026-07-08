@@ -3,6 +3,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   selector: 'app-edit-territory',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<h1>Modifier le territoire</h1>'
+  templateUrl: './edit-territory.html',
+  styleUrls: ['./edit-territory.scss']
 })
 export class EditTerritory {}

@@ -3,6 +3,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   selector: 'app-territory-form',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<div>Territory Form Placeholder</div>'
+  templateUrl: './territory-form.html',
+  styleUrls: ['./territory-form.scss']
 })
 export class TerritoryForm {}

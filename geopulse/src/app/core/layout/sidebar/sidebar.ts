@@ -9,35 +9,14 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [CommonModule, MatListModule, MatIconModule, RouterLink, RouterLinkActive],
-  template: `
-    <div class="sidebar-content">
-      <mat-nav-list>
-        <a mat-list-item routerLink="/dashboard" routerLinkActive="active-item">
-          <mat-icon matListItemIcon>dashboard</mat-icon>
-          <span matListItemTitle>Tableau de bord</span>
-        </a>
-        <a mat-list-item routerLink="/maps" routerLinkActive="active-item">
-          <mat-icon matListItemIcon>map</mat-icon>
-          <span matListItemTitle>Cartographie</span>
-        </a>
-        <a mat-list-item routerLink="/territories" routerLinkActive="active-item">
-          <mat-icon matListItemIcon>location_city</mat-icon>
-          <span matListItemTitle>Territoires</span>
-        </a>
-        <a mat-list-item routerLink="/simulations" routerLinkActive="active-item">
-          <mat-icon matListItemIcon>science</mat-icon>
-          <span matListItemTitle>Simulations</span>
-        </a>
-      </mat-nav-list>
-    </div>
-  `,
-  styles: [`
-    .sidebar-content { height: 100%; padding-top: 16px; }
-    .active-item {
-      background: rgba(108, 92, 231, 0.1);
-      color: #6C5CE7;
-      border-right: 4px solid #6C5CE7;
-    }
-  `]
+  templateUrl: './sidebar.html',
+  styleUrls: ['./sidebar.scss']
 })
-export class Sidebar {}
+export class Sidebar {
+  menuItems = [
+    { path: '/dashboard', label: 'Tableau de bord', icon: 'dashboard' },
+    { path: '/territories', label: 'Territoires', icon: 'public' },
+    { path: '/simulations', label: 'Simulations', icon: 'analytics' },
+    { path: '/maps', label: 'Cartographie', icon: 'map' }
+  ];
+}

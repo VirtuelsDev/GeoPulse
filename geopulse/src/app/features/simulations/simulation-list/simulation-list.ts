@@ -7,12 +7,8 @@ import { SimulationStore } from '../state/simulation.store';
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [CommonModule],
-  template: `
-    <div class="simulations-page">
-      <h1>Simulations Urbaines</h1>
-      <p>Liste des scénarios de simulation en cours ou terminés.</p>
-    </div>
-  `
+  templateUrl: './simulation-list.html',
+  styleUrls: ['./simulation-list.scss']
 })
 export class SimulationList implements OnInit {
   protected store = inject(SimulationStore);

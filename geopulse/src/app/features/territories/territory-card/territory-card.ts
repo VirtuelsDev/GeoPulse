@@ -3,6 +3,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   selector: 'app-territory-card',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<div>Territory Card Placeholder</div>'
+  templateUrl: './territory-card.html',
+  styleUrls: ['./territory-card.scss']
 })
 export class TerritoryCard {}

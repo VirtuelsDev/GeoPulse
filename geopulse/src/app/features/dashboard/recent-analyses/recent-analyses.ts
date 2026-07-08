@@ -3,6 +3,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   selector: 'app-recent-analyses',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<div>Recent Analyses Placeholder</div>'
+  templateUrl: './recent-analyses.html',
+  styleUrls: ['./recent-analyses.scss']
 })
 export class RecentAnalyses {}

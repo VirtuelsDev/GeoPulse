@@ -8,13 +8,8 @@ import { TerritoryStore } from '../state/territory.store';
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [CommonModule],
-  template: `
-    <div *ngIf="store.activeTerritory() as t">
-       <h1>{{ t.name }}</h1>
-       <p>Type: {{ t.type }}</p>
-       <p>Population: {{ t.population | number }}</p>
-    </div>
-  `
+  templateUrl: './territory-details.html',
+  styleUrls: ['./territory-details.scss']
 })
 export class TerritoryDetails implements OnInit {
   private route = inject(ActivatedRoute);

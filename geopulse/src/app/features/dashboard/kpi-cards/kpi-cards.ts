@@ -3,6 +3,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   selector: 'app-kpi-cards',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<div>KPI Cards Placeholder</div>'
+  templateUrl: './kpi-cards.html',
+  styleUrls: ['./kpi-cards.scss']
 })
 export class KpiCards {}
